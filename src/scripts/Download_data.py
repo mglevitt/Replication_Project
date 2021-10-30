@@ -27,7 +27,7 @@ def download_file(year):
         logging.error('Unexpected error while downloading data from {year}.')
 
 
-for i in range(2011 - 1950):
-    yr = 1950 + i
+for i in range(11):
+    yr = 2011 + i
     download_file(yr)
 

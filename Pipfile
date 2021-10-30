@@ -9,6 +9,9 @@ requests = "*"
 logger = "*"
 path = "*"
 pathlib = "*"
+pandas = "*"
+xarray = "*"
+regex = "*"
 
 [dev-packages]
 
