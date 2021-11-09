@@ -68,7 +68,7 @@ def create_csv(offset):
     df = pd.DataFrame(data)
     cwd = os.getcwd()
     file_name = f'temporal_offset_{str(offset)}_data.csv'
-    file_path = f'{cwd}/src/data//{file_name}'
+    file_path = f'{cwd}/src/final_data/{file_name}'
     df.to_csv(file_path)
 
 for i in range(1,4):

@@ -36,7 +36,7 @@ combined_df = pd.concat(dfs)
 print(combined_df.head())
 cwd = os.getcwd()
 file_path = f'{cwd}/src/data/monthly_data.csv'
-djf_file_path = f'{cwd}/src/data/monthly_djf_data.csv'
+djf_file_path = f'{cwd}/src/final_data/monthly_djf_data.csv'
 combined_df.to_csv(file_path)
 
 enso_df = combined_df[combined_df['tel'] == 'enso']
