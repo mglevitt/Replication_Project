@@ -12,6 +12,7 @@ pathlib = "*"
 pandas = "*"
 xarray = "*"
 regex = "*"
+numpy = "*"
 
 [dev-packages]
 
