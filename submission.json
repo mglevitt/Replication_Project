@@ -1,0 +1,4 @@
+{
+    "dockerhub-id": "mglevitt/test_replication_project:run_test",
+    "build-script": "python ./src/scripts/run.py"
+}
