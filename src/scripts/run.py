@@ -1,8 +1,7 @@
-
 import numpy as np
 import os
 import pandas as pd
-#import unittest
+import unittest
 from causallearn.graph.GraphClass import CausalGraph
 from causallearn.search.ConstraintBased.PC import pc
 from causallearn.utils.PCUtils import SkeletonDiscovery
@@ -40,7 +39,7 @@ for i in range(len(off3.columns)):
 ## Start with offset 3 because it runs the quickest    
 ## Run PC generally to get the names of all possible nodes    
 
-cg = pc(np.array(off3), 0.01, fisherz, False, 0, -1)
+cg = pc(np.array(off3), 0.01, fisherz, True, 0, -1)
 
 ## Create tiers so we can input forbidden nodes
 
@@ -88,14 +87,20 @@ cg = pc(np.array(off3), 0.01, fisherz, True, 0, -1, background_knowledge = bk)
 cg.to_nx_graph()
 cg.draw_nx_graph(skel=False)
 
+#for i in sorted(cg.find_fully_directed()):
+ #   print(d3[(i[0])][0] + '--->' + d3[(i[1])][0])
+d = {}
 for i in sorted(cg.find_fully_directed()):
-    print(d3[(i[0])][0] + '--->' + d3[(i[1])][0])
-    
-    
+    if (d3[(i[0])][0][:3] + '->' + d3[(i[1])][0][:3] + ', ' + str(d3[(i[1])][1] - d3[(i[0])][1])) in d.keys(): 
+        d[(d3[(i[0])][0][:3] + '->' + d3[(i[1])][0][:3] + ', ' + str(d3[(i[1])][1] - d3[(i[0])][1]))] += 1
+    else:
+        d[(d3[(i[0])][0][:3] + '->' + d3[(i[1])][0][:3] + ', ' + str(d3[(i[1])][1] - d3[(i[0])][1]))] = 1  
+print(d)
+
 ## Move to offset 2     
 ## Run PC generally to get the names of all possible nodes    
 
-cg = pc(np.array(off2), 0.01, fisherz, False, 0, -1)
+cg = pc(np.array(off2), 0.01, fisherz, True, 0, -1)
 
 ## Create tiers so we can input forbidden nodes
 
@@ -141,14 +146,19 @@ cg = pc(np.array(off2), 0.01, fisherz, True, 0, -1, background_knowledge = bk)
 cg.to_nx_graph()
 cg.draw_nx_graph(skel=False)
 
+#for i in sorted(cg.find_fully_directed()):
+#    print(d2[(i[0])][0] + '--->' + d2[(i[1])][0])
 for i in sorted(cg.find_fully_directed()):
-    print(d2[(i[0])][0] + '--->' + d2[(i[1])][0])
-
+    if (d2[(i[0])][0][:3] + '->' + d2[(i[1])][0][:3] + ', ' + str(d2[(i[1])][1] - d2[(i[0])][1])) in d.keys(): 
+        d[(d2[(i[0])][0][:3] + '->' + d2[(i[1])][0][:3] + ', ' + str(d2[(i[1])][1] - d2[(i[0])][1]))] += 1
+    else:
+        d[(d2[(i[0])][0][:3] + '->' + d2[(i[1])][0][:3] + ', ' + str(d2[(i[1])][1] - d2[(i[0])][1]))] = 1
+print(d)
 
 ## Finish with Offset 1    
 ## Run PC generally to get the names of all possible nodes    
 
-cg = pc(np.array(off1), 0.01, fisherz, False, 0, -1)
+cg = pc(np.array(off1), 0.01, fisherz, True, 0, -1)
 
 ## Create tiers so we can input forbidden nodes
 
@@ -194,7 +204,13 @@ cg = pc(np.array(off1), 0.01, fisherz, True, 0, -1, background_knowledge = bk)
 cg.to_nx_graph()
 cg.draw_nx_graph(skel=False)
 
+#for i in sorted(cg.find_fully_directed()):
+#    print(d1[(i[0])][0] + '--->' + d1[(i[1])][0])    
 for i in sorted(cg.find_fully_directed()):
-    print(d1[(i[0])][0] + '--->' + d1[(i[1])][0])    
-    
+    if (d1[(i[0])][0][:3] + '->' + d1[(i[1])][0][:3] + ', ' + str(d1[(i[1])][1] - d1[(i[0])][1])) in d.keys(): 
+        d[(d1[(i[0])][0][:3] + '->' + d1[(i[1])][0][:3] + ', ' + str(d1[(i[1])][1] - d1[(i[0])][1]))] += 1
+    else:
+        d[(d1[(i[0])][0][:3] + '->' + d1[(i[1])][0][:3] + ', ' + str(d1[(i[1])][1] - d[(i[0])][1]))] = 1    
+        
+print(d)
     
