@@ -2,7 +2,7 @@
 import numpy as np
 import os
 import pandas as pd
-#import unittest
+import unittest
 from causallearn.graph.GraphClass import CausalGraph
 from causallearn.search.ConstraintBased.PC import pc
 from causallearn.utils.PCUtils import SkeletonDiscovery
@@ -19,9 +19,12 @@ off1 = pd.read_csv(f'{cwd}/test/test_data/test_temporal_offset_1_data.csv')
 off2 = pd.read_csv(f'{cwd}/test/test_data/test_temporal_offset_2_data.csv')
 off3 = pd.read_csv(f'{cwd}/test/test_data/test_temporal_offset_3_data.csv')
 
+df = pd.read_csv(f'{cwd}/test/test_data/monthly_djf_data.csv')
+
 off1 = off1[off1.columns[1:]]
 off2 = off2[off2.columns[1:]]
 off3 = off3[off3.columns[1:]]
+new_df = df.set_index('date')
 
 ## Create three different dictionaries that tell us the oscillation corresponding to each node
 
@@ -215,3 +218,12 @@ for i in sorted(cg.find_fully_directed()):
         
 print(d)
     
+    
+    
+## Monthly ENSO Values
+
+cg = pc(np.array(new_df), 0.05, fisherz, True, 0, -1)
+cg.to_nx_graph()
+cg.draw_nx_graph(skel=False)
+for i in range(len(new_df.columns)):
+    print(str(i) + ': ' + new_df.columns[i])
