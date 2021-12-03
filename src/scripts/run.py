@@ -15,11 +15,11 @@ from causallearn.utils.cit import fisherz
 
 cwd = os.getcwd()
 
-off1 = pd.read_csv(f'{cwd}/test/test_data/test_temporal_offset_1_data.csv')
-off2 = pd.read_csv(f'{cwd}/test/test_data/test_temporal_offset_2_data.csv')
-off3 = pd.read_csv(f'{cwd}/test/test_data/test_temporal_offset_3_data.csv')
+off1 = pd.read_csv(f'{cwd}/src/final_data/test_temporal_offset_1_data.csv')
+off2 = pd.read_csv(f'{cwd}/src/final_data/test_temporal_offset_2_data.csv')
+off3 = pd.read_csv(f'{cwd}/src/final_data/test_temporal_offset_3_data.csv')
 
-df = pd.read_csv(f'{cwd}/test/test_data/monthly_djf_data.csv')
+df = pd.read_csv(f'{cwd}/src/final_data/monthly_djf_data.csv')
 
 off1 = off1[off1.columns[1:]]
 off2 = off2[off2.columns[1:]]
