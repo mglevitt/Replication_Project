@@ -216,7 +216,16 @@ for i in sorted(cg.find_fully_directed()):
     else:
         d[(d1[(i[0])][0][:3] + '->' + d1[(i[1])][0][:3] + ', ' + str(d1[(i[1])][1] - d[(i[0])][1]))] = 1    
         
-print(d)
+keys = []
+values = []
+for key, value in d.items():
+    dist = float(key[10:])
+    if (dist >= 0) & (value > 2):
+        keys.append(key)
+        values.append(value)
+rel_df = pd.DataFrame({'relation':keys,'amount':values})
+rel_df = rel_df.sort_values(by = 'amount', ascending= False)
+print(rel_df)
     
     
     
